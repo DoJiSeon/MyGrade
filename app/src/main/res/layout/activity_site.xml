@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="대입 관련 사이트"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/dxkundongbyulgok"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/orange"
+        android:text="수만휘"
+        android:textSize="25dp"
+        android:fontFamily="@font/dxkundongbyulgok"
+        android:id="@+id/site_1"
+        />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="진학사"
+        android:textSize="25dp"
+        android:fontFamily="@font/dxkundongbyulgok"
+        android:id="@+id/site_2"
+
+        />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="대입정보포털"
+        android:textSize="25dp"
+        android:fontFamily="@font/dxkundongbyulgok"
+        android:id="@+id/site_3"
+        />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange"
+        android:text="대학알리미"
+        android:textSize="25dp"
+        android:fontFamily="@font/dxkundongbyulgok"
+        android:id="@+id/site_4"
+        />
+</LinearLayout>
