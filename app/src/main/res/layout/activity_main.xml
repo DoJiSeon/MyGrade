@@ -18,7 +18,8 @@
             android:layout_centerInParent="true"
             android:textSize="30dp"
             android:id="@+id/btn_contents"
-            android:text="여기를 클릭하자"/>
+            android:backgroundTint="@color/orange"
+            android:text="클릭"/>
 
     </RelativeLayout>
 

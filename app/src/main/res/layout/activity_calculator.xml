@@ -49,6 +49,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="C" />
 
         <Button
@@ -56,6 +57,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="( )" />
 
         <Button
@@ -63,6 +65,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="%" />
 
         <Button
@@ -70,6 +73,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="÷" />
 
 
@@ -78,6 +82,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="7" />
 
         <Button
@@ -85,6 +90,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="8" />
 
         <Button
@@ -92,6 +98,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="9" />
 
         <Button
@@ -99,6 +106,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="X" />
 
 
@@ -107,6 +115,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="4" />
 
         <Button
@@ -114,6 +123,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="5" />
 
         <Button
@@ -121,6 +131,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="6" />
 
         <Button
@@ -128,6 +139,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="-" />
 
 
@@ -136,6 +148,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="1" />
 
         <Button
@@ -143,6 +156,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="2" />
 
         <Button
@@ -150,6 +164,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="3" />
 
         <Button
@@ -157,6 +172,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="+" />
 
 
@@ -165,6 +181,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="back" />
 
         <Button
@@ -172,6 +189,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="0" />
 
         <Button
@@ -179,6 +197,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="." />
 
         <Button
@@ -186,6 +205,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="-5dp"
+            android:backgroundTint="@color/orange"
             android:text="=" />
 
     </GridLayout>
