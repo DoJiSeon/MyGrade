@@ -18,6 +18,7 @@
             android:layout_centerInParent="true"
             android:textSize="30dp"
             android:id="@+id/btn_contents"
+            android:fontFamily="@font/dxkundongbyulgok"
             android:backgroundTint="@color/orange"
             android:text="클릭"/>
 

@@ -78,25 +78,29 @@ public class Data extends Activity {
             @Override
             public void onClick(View view) {
                 try {
-                    Integer Grade = Integer.valueOf(grade.getText().toString());
-                    Integer Semester = Integer.valueOf(semester.getText().toString());
-                    Integer Average = Integer.valueOf(average.getText().toString());
-
                     try {
-                        String exam;
-                        int id = examgroup.getCheckedRadioButtonId();
-                        RadioButton rb = (RadioButton)findViewById(id);
-                        exam = rb.getText().toString();
+                        try{
+                            Integer Grade = Integer.valueOf(grade.getText().toString());
+                            Integer Semester = Integer.valueOf(semester.getText().toString());
+                            Integer Average = Integer.valueOf(average.getText().toString());
 
-                        mDBManager.insert(mDBManager, countInt , Grade, Semester, exam, Average);
-                        grade.setText("");
-                        semester.setText("");
-                        average.setText("");
+                            String exam;
+                            int id = examgroup.getCheckedRadioButtonId();
+                            RadioButton rb = (RadioButton)findViewById(id);
+                            exam = rb.getText().toString();
 
-                        countInt = countInt +1;
-                        editor.putInt("myCount", countInt);
-                        editor.apply();
+                            mDBManager.insert(mDBManager, countInt , Grade, Semester, exam, Average);
 
+                            grade.setText("");
+                            semester.setText("");
+                            average.setText("");
+
+                            countInt = countInt +1;
+                            editor.putInt("myCount", countInt);
+                            editor.apply();
+                        }catch (NullPointerException e){
+                            Toast.makeText(getApplicationContext(),"모든 칸과 버튼을 채워주세요",Toast.LENGTH_SHORT).show();
+                        }
                     }catch (SQLiteConstraintException e){
                         Toast.makeText(getApplicationContext(),"시험 종류를 선택해주세요",Toast.LENGTH_SHORT).show();
                     }
@@ -164,7 +168,7 @@ public class Data extends Activity {
         AlertDialog.Builder msgBuilder = new AlertDialog.Builder(Data.this)
                 .setTitle("나의 성적 입력 가이드")
                 .setMessage("1. 정보 입력 시 번호란을 제외한 나머지 칸(버튼)을 모두 입력/클릭합니다." +
-                        " \n" +"2. 삭제 버튼 클릭 시 모든 데이터가 삭제 됩니다.\n" +
+                        " \n" +"2. 삭제 버튼 클릭 혹은 앱 삭제 시 모든 데이터가 삭제 됩니다.\n" +
                         "3. 정보 수정 시 수정할 리스트의 번호와 수정할 데이터를 입력하되 바뀌지 않은 값은 칸을 비우지 않고 그대로 채워 넣어준 후 업데이트 버튼을 누릅니다. ")
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {

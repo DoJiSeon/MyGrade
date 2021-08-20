@@ -29,6 +29,7 @@
                 android:layout_gravity="center"
                 android:backgroundTint="@color/orange"
                 android:text="수만휘"
+                android:textColor="@color/white"
                 android:textSize="25dp"
                 android:fontFamily="@font/dxkundongbyulgok"
                 android:id="@+id/site_1"
@@ -41,6 +42,7 @@
                 android:backgroundTint="@color/orange"
                 android:text="진학사"
                 android:textSize="25dp"
+                android:textColor="@color/white"
                 android:fontFamily="@font/dxkundongbyulgok"
                 android:id="@+id/site_2"
 
@@ -53,6 +55,7 @@
                 android:backgroundTint="@color/orange"
                 android:text="대입정보포털"
                 android:textSize="25dp"
+                android:textColor="@color/white"
                 android:fontFamily="@font/dxkundongbyulgok"
                 android:id="@+id/site_3"
                 />
@@ -64,6 +67,7 @@
                 android:backgroundTint="@color/orange"
                 android:text="대학알리미"
                 android:textSize="25dp"
+                android:textColor="@color/white"
                 android:fontFamily="@font/dxkundongbyulgok"
                 android:id="@+id/site_4"
                 />

@@ -69,7 +69,6 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put(COL_5, average);
         mDB.update(TABLE_NAME,contentValues,"_id = ?", new String[]{String.valueOf(id)});
 
-        // mDB.execSQL("UPDATE Android SET price = "+ (count_ID+10) +" WHERE price = "+ (count_ID-1) +";");
         // mDB.execSQL("INSERT OR REPLACE INTO MyGrade(_id, grade, semester, exam, average) VALUES (" + id+ ", "+ grade +", " +semester+", '"+ exam +"', "+ average +" );");
         mDBManager.close();
         Log.v(null,"Update DB : "+id);
