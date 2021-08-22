@@ -240,13 +240,13 @@ public class Calculator extends AppCompatActivity {
 
     private void preview() {
         if (isPreview) {
-            result = textView.getText().toString();
-            double r = calculateHelper.process(result);
+            result = textView.getText().toString(); //입력한 값 받아옴
+            double r = calculateHelper.process(result); // process에서 result 결과 값 받아옴
 
-            if (!isDot)
-                textView2.setText(String.valueOf((int) r));
+            if (!isDot) // . 이 없을 경우
+                textView2.setText(String.valueOf((int) r)); // Double 형으로 출력하면 xx.0으로 출력 되므로 (int)를 써서 강제 형변환을 한 상태로 값 입력함.
             else
-                textView2.setText(String.valueOf(r));
+                textView2.setText(String.valueOf(r)); // .이 있다면 실수 이므로 그대로 출력.
         }
     }
     private void setTextView() {

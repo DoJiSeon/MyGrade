@@ -9,6 +9,8 @@ public class CalculateHelper {
     public static double num2;
     public static double resultNumber;
 
+    // push - 삽입 , pop - 삭제 , peek - 읽기
+
     private ArrayList splitTokens(String equation) {
         String[] constant = equation.split(" "); //공백을 기준
 
@@ -49,41 +51,41 @@ public class CalculateHelper {
 
 
 //각 기호의 우선순위 레벨. 곱하기, 나누기 > 더하기, 빼기 > 기타
-        level.put("*", 3);
+        level.put("*", 3); // (키값, value)
         level.put("/", 3);
         level.put("+", 2);
         level.put("-", 2);
         level.put("(", 1);
 
         for (Object object : constant) {
-            if (object.equals("(")) {
-                stack.push(object);
-            } else if (object.equals(")")) {
-                while (!stack.peek().equals("(")) {
-                    Object val = stack.pop();
-                    if (!val.equals("(")) {
-                        result.add(val);
+            if (object.equals("(")) { // 배열의 값이 ( 일경우
+                stack.push(object); // object 삽입
+            } else if (object.equals(")")) { // 배열의 값이 ) 일경우
+                while (!stack.peek().equals("(")) { // 가장 마지막에 들어온 스택의 값이 ( 가 아닐경우
+                    Object val = stack.pop(); // 마지막거 빼기
+                    if (!val.equals("(")) { // 뺀 값이 (가 아닐경우
+                        result.add(val); // result arraylist에 추가
                     }
                 }
-                stack.pop();
-            } else if (level.containsKey(object)) {
-                if (stack.isEmpty()) {
-                    stack.push(object);
-                } else {
-                    if (Double.parseDouble(level.get(stack.peek()).toString()) >= Double.parseDouble(level.get(object).toString())) {
-                        result.add(stack.pop());
-                        stack.push(object);
+                stack.pop(); // 스택에서 ( 빼기
+            } else if (level.containsKey(object)) { // level에 *, /, +, -, ( 중 하나가 있다면
+                if (stack.isEmpty()) { // 스택이 비어있다면
+                    stack.push(object); // 오브젝트를 스택에 넣기
+                } else { // 스택이 비어있지 않다면
+                    if (Double.parseDouble(level.get(stack.peek()).toString()) >= Double.parseDouble(level.get(object).toString())) { // 우선순위 비교
+                        result.add(stack.pop()); // result arraylist에 스택에서 빼온 값 넣기
+                        stack.push(object); // 스택에 object 넣기
                     } else {
-                        stack.push(object);
+                        stack.push(object); // 스택에 object 넣기
                     }
                 }
             } else {
-                result.add(object);
+                result.add(object); // result에 object 넣기
             }
         }
 
-        while (!stack.isEmpty()) {
-            result.add(stack.pop());
+        while (!stack.isEmpty()) { // 스택이 비어있지 않다면
+            result.add(stack.pop()); // result에 스택에서 빼온 값 넣기
         }
 
         return result;
@@ -93,28 +95,28 @@ public class CalculateHelper {
     private Double postFixEval(ArrayList expr) {
         Stack numberStack = new Stack();
         for (Object o : expr) {
-            if (o instanceof Double) {
+            if (o instanceof Double) { // o가 Double의 자식이라면 즉, 피연산자라면
                 numberStack.push(o);
-            } else if (o.equals("+")) {
-                num1 = (Double) numberStack.pop();
-                num2 = (Double) numberStack.pop();
-                numberStack.push(num2 + num1);
-            } else if (o.equals("-")) {
-                num1 = (Double) numberStack.pop();
-                num2 = (Double) numberStack.pop();
-                numberStack.push(num2 - num1);
-            } else if (o.equals("*")) {
-                num1 = (Double) numberStack.pop();
-                num2 = (Double) numberStack.pop();
-                numberStack.push(num2 * num1);
-            } else if (o.equals("/")) {
-                num1 = (Double) numberStack.pop();
-                num2 = (Double) numberStack.pop();
-                numberStack.push(num2 / num1);
+            } else if (o.equals("+")) { // o가 +이면
+                num1 = (Double) numberStack.pop(); // numberstack에서 값 빼오기
+                num2 = (Double) numberStack.pop();// numberstack에서 값 빼오기
+                numberStack.push(num2 + num1); // 2개를 더해서 넣기
+            } else if (o.equals("-")) { // o가 -이면
+                num1 = (Double) numberStack.pop();// numberstack에서 값 빼오기
+                num2 = (Double) numberStack.pop();// numberstack에서 값 빼오기
+                numberStack.push(num2 - num1);// 2개를 빼서서 넣기
+            } else if (o.equals("*")) { // o가 *이면
+                num1 = (Double) numberStack.pop();// numberstack에서 값 빼오기
+                num2 = (Double) numberStack.pop();// numberstack에서 값 빼오기
+                numberStack.push(num2 * num1);// 2개를 곱해서 넣기
+            } else if (o.equals("/")) {// o가 /이면
+                num1 = (Double) numberStack.pop();// numberstack에서 값 빼오기
+                num2 = (Double) numberStack.pop();// numberstack에서 값 빼오기
+                numberStack.push(num2 / num1);// 2개를 나눠서 넣기
             }
         }
 
-        resultNumber = (Double) numberStack.pop();
+        resultNumber = (Double) numberStack.pop(); // 결과값은 결국 하나. 마지막으로 남은 결과 값 빼와서 넣어줌.
 
         return resultNumber;
     }
@@ -128,16 +130,16 @@ public class CalculateHelper {
     public boolean checkNumber(String str) {
         char check;
 
-        if (str.equals(""))
+        if (str.equals("")) // 공백, 더이상 글자가 없다면 리턴(종료)
             return false;
 
         for (int i = 0; i < str.length(); i++) {
-            check = str.charAt(i);
-            if (check < 48 || check > 58) {
-                if (check != '.')
+            check = str.charAt(i); // str의 첫번째 숫자부터 끝 자리까지
+            if (check < 48 || check > 58) { // 아스키 코드표를 보면 이해 가능, 숫자가 아닐경우
+                if (check != '.') // check가 . 도 아닐경우 false 반환
                     return false;
             }
         }
-        return true;
+        return true; // 숫자 혹은 . 일경우 true
     }
 }
