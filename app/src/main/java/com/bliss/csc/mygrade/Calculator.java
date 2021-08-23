@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Calculator extends AppCompatActivity {
     CalculateHelper calculateHelper;
 
-    boolean isDot;
-    boolean isBracket;
-    boolean isPreview;
+    boolean isDot; // . 이있나 없나
+    boolean isBracket; // 괄호가 있나 없나
+    boolean isPreview; // preview 실행 유무
 
     TextView textView;
     TextView textView2;
@@ -38,7 +38,7 @@ public class Calculator extends AppCompatActivity {
     Button mul; //곱하기
     Button div; //나누기
     Button clear; //전체 삭제
-    Button bracket; // 가로
+    Button bracket; // 괄호
     Button percent; // 퍼센트
     Button back; // 삭제
     Button dot; //점
@@ -54,7 +54,7 @@ public class Calculator extends AppCompatActivity {
 
         size = 0;
         int number = 25;
-        int t = String.valueOf(Math.sqrt(number)).length();
+        int t = String.valueOf(Math.sqrt(number)).length();  // Math.sqrt = 제곱근 구하는 함수 , 25의 제곱근 = 5
         Log.d("test", "" + t + " ? " + String.valueOf(Math.sqrt(number)));
 
         isPreview = false;
@@ -190,25 +190,25 @@ public class Calculator extends AppCompatActivity {
 
                     break;
                 case R.id.bracket:
-                    if (!isBracket) {
+                    if (!isBracket) { // isBracket가 false 일경우 ( 넣기
                         textView.append("( ");
                         isBracket = true;
-                    } else {
+                    } else { // isBracket가 true 일경우 ) 넣기
                         textView.append(" )");
-                        isBracket = false;
+                        isBracket = false; // 다시 false 로 바꿈
                     }
 
                     isPreview = true;
 
                     break;
                 case R.id.back:
-                    size = textView.getText().length();
+                    size = textView.getText().length(); // 계산 값의 길이를 받아옴
 
                     if (size != 0)
-                        textView.setText(textView.getText().toString().substring(0, size - 1));
+                        textView.setText(textView.getText().toString().substring(0, size - 1)); // 원래 길이만큼 가져옴
 
                     if (size > 1) {
-                        if (calculateHelper.checkNumber(textView.getText().toString().substring(size - 2)))
+                        if (calculateHelper.checkNumber(textView.getText().toString().substring(size - 2))) // 이상한 문자가 없다면 한자리를 뺌.
                             preview();
                         else {
                             isPreview = false;
@@ -225,10 +225,10 @@ public class Calculator extends AppCompatActivity {
                     result = textView.getText().toString();
                     double r = calculateHelper.process(result);
 
-                    if (!isDot)
-                        textView.setText(String.valueOf((int) r));
+                    if (!isDot) // . 이 없다면
+                        textView.setText(String.valueOf((int) r)); // 정수형으로 반환해서 글자 넣어줌
                     else
-                        textView.setText(String.valueOf(r));
+                        textView.setText(String.valueOf(r)); //  . 이 있다면 실수형으로 반환해야 하기에 그대로 반환
 
                     textView2.setText("");
                     isDot = false;
@@ -239,7 +239,7 @@ public class Calculator extends AppCompatActivity {
     };
 
     private void preview() {
-        if (isPreview) {
+        if (isPreview) { // isPreview가 true 일 경우
             result = textView.getText().toString(); //입력한 값 받아옴
             double r = calculateHelper.process(result); // process에서 result 결과 값 받아옴
 
@@ -250,7 +250,7 @@ public class Calculator extends AppCompatActivity {
         }
     }
     private void setTextView() {
-        textView = findViewById(R.id.first_textView);
-        textView2 = findViewById(R.id.second_textView);
+        textView = findViewById(R.id.first_textView); // 계산할 값
+        textView2 = findViewById(R.id.second_textView); // 결과 값
     }
 }

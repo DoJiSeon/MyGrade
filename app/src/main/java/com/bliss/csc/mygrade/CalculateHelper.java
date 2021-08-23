@@ -22,21 +22,21 @@ public class CalculateHelper {
             if (data.equals(" ")) {
                 continue;
             }
-            if (checkNumber(data)) {
+            if (checkNumber(data)) { // checkNumber 메소드에서 숫자일 경우 true 반환, true일 경우 실행
                 number = number * 10 + Double.parseDouble(data);
                 flag = true;
-            } else {
-                if (flag) {
-                    constantList.add(number);
-                    number = 0;
+            } else { // data가 숫자가 아닐경우
+                if (flag) { // 숫자가 들어있다면 피연산자를 넣어줌
+                    constantList.add(number); // constantList에 넣어준다.
+                    number = 0; // number 초기화
                 }
                 flag = false;
                 constantList.add(data);
             }
         }
 
-        if (flag) {
-            constantList.add(number);
+        if (flag) { // flag가 true이면
+            constantList.add(number); //number를 추가한다.
         }
 
         return constantList;
@@ -51,11 +51,11 @@ public class CalculateHelper {
 
 
 //각 기호의 우선순위 레벨. 곱하기, 나누기 > 더하기, 빼기 > 기타
-        level.put("*", 3); // (키값, value)
-        level.put("/", 3);
-        level.put("+", 2);
-        level.put("-", 2);
-        level.put("(", 1);
+        level.put("*", 3); // (키값, value) , 우선순위 설정
+        level.put("/", 3); // (키값, value) , 우선순위 설정
+        level.put("+", 2); // (키값, value) , 우선순위 설정
+        level.put("-", 2); // (키값, value) , 우선순위 설정
+        level.put("(", 1); // (키값, value) , 우선순위 설정
 
         for (Object object : constant) {
             if (object.equals("(")) { // 배열의 값이 ( 일경우
@@ -122,9 +122,9 @@ public class CalculateHelper {
     }
 
     public Double process(String equation) {
-        ArrayList postfix = infixToPostfix(splitTokens(equation));
-        Double result = postFixEval(postfix);
-        return result;
+        ArrayList postfix = infixToPostfix(splitTokens(equation)); // 계산 값을 배열과 리스트로 나눠서 넣음.
+        Double result = postFixEval(postfix); // 배열을 계산해 result 에 넣어줌.
+        return result; //result 값을 반환
     }
 
     public boolean checkNumber(String str) {
