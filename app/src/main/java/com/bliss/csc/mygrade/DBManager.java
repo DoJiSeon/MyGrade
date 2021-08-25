@@ -75,9 +75,14 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
     // 평균 값 계산 메서드 (아직 개발중...)
-    public void all_average(DBManager mDBManager) {
-        String query = "SELECT AVG("+ TABLE_COLUMN_AVERAGE +") FROM "+ TABLE_NAME;
+    public double all_average(DBManager mDBManager) {
+        String query = "SELECT avg("+ TABLE_COLUMN_AVERAGE +") FROM "+ TABLE_NAME;
+
+        double average = 0;
         mDB.rawQuery(query, null);
+
+
+        return average;
     }
 
 }

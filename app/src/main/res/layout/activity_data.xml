@@ -103,29 +103,64 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-    <RadioGroup
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/examRgroup"
         android:layout_gravity="center">
-        <RadioButton
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/middleexam"
-            android:text="중간고사"
-            android:fontFamily="@font/dxkundongbyulgok"
-            android:paddingRight="20dp"
-            android:textSize="18dp"/>
-        <RadioButton
+            android:orientation="horizontal"
+            android:id="@+id/examRgroup"
+            android:layout_gravity="center">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/middleexam"
+                android:text="중간고사"
+                android:fontFamily="@font/dxkundongbyulgok"
+                android:paddingRight="20dp"
+                android:textSize="18dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastexam"
+                android:paddingRight="20dp"
+                android:fontFamily="@font/dxkundongbyulgok"
+                android:text="기말고사"
+                android:textSize="18dp"/>
+        </RadioGroup>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lastexam"
+            android:text="총 평균 : "
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:textStyle="bold"
             android:fontFamily="@font/dxkundongbyulgok"
-            android:text="기말고사"
-            android:textSize="18dp"/>
-    </RadioGroup>
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AllAverage"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/dxkundongbyulgok"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 점"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/dxkundongbyulgok"
+            />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

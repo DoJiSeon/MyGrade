@@ -17,9 +17,13 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Data extends Activity {
 
@@ -33,7 +37,7 @@ public class Data extends Activity {
     ImageButton btn_help; // 경고창
     ArrayAdapter adapter, adapter2, adapter3, adapter4, adapter_id; //리스트에 넣어줄 어댑터
     RadioGroup examgroup; //라디오 그룹
-
+    TextView allaverage;
     SharedPreferences pref; //프리퍼런스
     SharedPreferences.Editor editor; //에디터
 
@@ -48,6 +52,8 @@ public class Data extends Activity {
         semester = (EditText)findViewById(R.id.semester);//학기 받아올 에디트 텍스트
         average = (EditText)findViewById(R.id.average);//평균 받아올 에디트 텍스트
         id = (EditText)findViewById(R.id.id_edt);//번호 받아올 에디트 텍스트
+
+        allaverage = (TextView)findViewById(R.id.AllAverage);//번호 받아올 에디트 텍스트
 
         btn_insert = (Button)findViewById(R.id.btn_insert); // 값 입력 버튼
         btn_delete = (Button)findViewById(R.id.btn_delete); // 값 삭제 버튼
@@ -191,36 +197,67 @@ public class Data extends Activity {
 
     }
 
+
+
     // 현재 테스트 중
-    public Cursor avg_average(){
-        //String query = "SELECT AVG("+ TABLE_COLUMN_AVERAGE +") FROM "+ TABLE_NAME;
+    public void avg_average(){
+        int[] averages = null;
         mDB = mDBManager.getReadableDatabase();
-        Cursor cursor = mDB.rawQuery("SELECT AVG( average ) FROM MyGrade;", null);
-        startManagingCursor(cursor);
-        cursor.close();
-        return cursor;
+        int average_sum = 0;
+        int average_count = 0;
+        Double Allaverage;
+        /*
+        String sql = "select average from MyGrade where average not null";
+        try{
+            cursor = mDB.rawQuery(sql,null);
+
+            if (cursor.getCount() > 0){
+                averages = new int[cursor.getCount()];
+                int i = 0;
+                while (cursor.moveToNext()){
+                    averages[i] = cursor.getInt(4);
+                    i++;
+                    average_count ++;
+                }
+                for (int j = 0; j < averages.length ; j++){
+                    average_sum = average_sum + averages[i];
+                }
+                Allaverage = Double.valueOf(average_sum/average_count);
+                Log.i("평균들의 합 : ", String.valueOf(average_sum));
+                Log.i("평균들의 갯수 : ",String.valueOf(average_count));
+                Log.i("평균들의 총합 : ", String.valueOf(Allaverage));
+                allaverage.setText(String.valueOf(Allaverage));
+            }
+            cursor.close();
+        }catch (ArithmeticException e){
+            Log.i("계산결과", "계산할 수 없습니다.");
+        }*/
+
 
     }
 
     // 데이터 베이스 값들을 가져옴
     public void listUpdate(){
         mDB = mDBManager.getReadableDatabase();
-        cursor = mDB.rawQuery("SELECT * FROM MyGrade",null); // MyGrade 테이블에서 모든 값들을 받아옴.
+        cursor = mDB.rawQuery("SELECT * FROM MyGrade",null); // MyGrade 테이블에서 모든 값들을 받아옴. * = 전체, 모든 값
         startManagingCursor(cursor);
 
+        adapter_id = new ArrayAdapter(this, android.R.layout.simple_list_item_1);// 번호 어댑터
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1); // 학년 어댑터
         adapter2 = new ArrayAdapter(this, android.R.layout.simple_list_item_1);// 학기 어댑터
         adapter3 = new ArrayAdapter(this, android.R.layout.simple_list_item_1);// 시험 어댑터
         adapter4 = new ArrayAdapter(this, android.R.layout.simple_list_item_1);// 평균 어댑터
-        adapter_id = new ArrayAdapter(this, android.R.layout.simple_list_item_1);// 번호 어댑터
-
+        int averages = 0;
         while (cursor.moveToNext()){ // 커서가 현재 레코드의 끝까지 가면 다음 레코드로 이동
             adapter_id.add(cursor.getInt(0)); // 첫번째 필드의 값
             adapter.add(cursor.getInt(1)); // 두번째 필드의 값
             adapter2.add(cursor.getInt(2)); //세번째 필드의 값
             adapter3.add(cursor.getString(3)); // 네번째 필드의 값
             adapter4.add(cursor.getInt(4)); //다섯번째 필드의 값
+
         }
+
+
         listView_id.setAdapter(adapter_id); // 번호 값을 넣을 리스트 뷰에 번호 어댑터 값을 넘겨 줌.
         listView.setAdapter(adapter); // 학년 값을 넣을 리스트 뷰에 학년 어댑터 값을 넘겨 줌.
         listView2.setAdapter(adapter2); // 학기 값을 넣을 리스트 뷰에 학기 어댑터 값을 넘겨 줌.
