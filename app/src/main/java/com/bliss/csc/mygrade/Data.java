@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -166,6 +167,7 @@ public class Data extends Activity {
             public void onClick(View view) {
                 //리스트 업데이트 데이터 실행
                 listUpdate();
+                avg_average();
             }
         });
 
@@ -201,11 +203,34 @@ public class Data extends Activity {
 
     // 현재 테스트 중
     public void avg_average(){
-        int[] averages = null;
+
+        int[] averages = new int[countInt];
         mDB = mDBManager.getReadableDatabase();
-        int average_sum = 0;
+        double average_sum = 0;
         int average_count = 0;
         Double Allaverage;
+        String avg = "SELECT avg(average) FROM MyGrade";
+        String count = "SELECT * FROM MyGrade";
+
+        cursor = mDB.rawQuery(count,null);
+
+        if (countInt != 0){
+            int plus = 0;
+            cursor.moveToFirst();
+            while(cursor.moveToNext()){
+                averages[plus] = cursor.getInt(cursor.getColumnIndex("average"));
+            plus ++;
+            }
+            for (int k = 0; k<= plus; k++){
+                Log.i("평균들", String.valueOf(averages[k]));
+            }
+        }
+
+
+
+
+
+
         /*
         String sql = "select average from MyGrade where average not null";
         try{
