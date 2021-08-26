@@ -204,7 +204,7 @@ public class Data extends Activity {
     // 현재 테스트 중
     public void avg_average(){
 
-        int[] averages = new int[countInt];
+
         mDB = mDBManager.getReadableDatabase();
         double average_sum = 0;
         int average_count = 0;
@@ -213,12 +213,14 @@ public class Data extends Activity {
         String count = "SELECT * FROM MyGrade";
 
         cursor = mDB.rawQuery(count,null);
+        startManagingCursor(cursor);
+        int[] averages = new int[countInt];
 
-        if (countInt != 0){
+        if (cursor != null && cursor.getCount() !=0){
             int plus = 0;
             cursor.moveToFirst();
             while(cursor.moveToNext()){
-                averages[plus] = cursor.getInt(cursor.getColumnIndex("average"));
+                averages[plus] = cursor.getInt(4);
             plus ++;
             }
             for (int k = 0; k<= plus; k++){
