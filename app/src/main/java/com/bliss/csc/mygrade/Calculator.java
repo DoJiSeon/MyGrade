@@ -58,9 +58,9 @@ public class Calculator extends AppCompatActivity {
         Log.d("test", "" + t + " ? " + String.valueOf(Math.sqrt(number)));
 
         isPreview = false;
+
         isBracket = false;
         isDot = false;
-
         int[][] test = new int[5][4];
         setButton();
         setTextView();

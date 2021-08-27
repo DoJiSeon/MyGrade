@@ -95,7 +95,7 @@ public class CalculateHelper {
     private Double postFixEval(ArrayList expr) {
         Stack numberStack = new Stack();
         for (Object o : expr) {
-            if (o instanceof Double) { // o가 Double의 자식이라면 즉, 피연산자라면
+            if (o instanceof Double) { // o가 Double의 자식이라면 즉, 연산자라면
                 numberStack.push(o);
             } else if (o.equals("+")) { // o가 +이면
                 num1 = (Double) numberStack.pop(); // numberstack에서 값 빼오기
